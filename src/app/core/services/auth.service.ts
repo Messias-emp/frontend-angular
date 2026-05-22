@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../../environments/environment';
 
 /* =============================
    CONTRATOS
@@ -24,8 +25,7 @@ interface JwtPayload {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-
-  private readonly API_URL = 'http://localhost:8080/auth';
+  private apiUrl = environment.apiUrl;
   private readonly TOKEN_KEY = 'token';
 
   constructor(private http: HttpClient) {}
@@ -50,7 +50,7 @@ export class AuthService {
      🔐 LOGIN
      ============================= */
   login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.API_URL}/login`, {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, {
       email,
       password
     });
