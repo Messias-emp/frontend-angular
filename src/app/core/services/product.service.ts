@@ -1,40 +1,44 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Product } from '../../shared/models/product.model';
 import { environment } from '../../../environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
 
+  // URL base do backend
   private apiUrl = environment.apiUrl;
-  // Base da API
-  // 🔗 Base dinâmica (local ou produção)
-  private readonly API = `${environment.apiUrl}/products`;
+
+  // Endpoint correto da API
+  private readonly API = `${this.apiUrl}/api/products`;
 
   constructor(private http: HttpClient) {}
 
-  // CREATE
+  // 📋 Listar produtos
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API);
+  }
+
+  // 🔍 Buscar por ID
+  getById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.API}/${id}`);
+  }
+
+  // ➕ Criar produto
   create(product: Product): Observable<Product> {
     return this.http.post<Product>(this.API, product);
   }
 
-  // READ - listar todos
-  findAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API);
-  }
-
-  // READ - buscar por id
-  findById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.API}/${id}`);
-  }
-
-  // UPDATE
+  // ✏️ Atualizar produto
   update(id: number, product: Product): Observable<Product> {
     return this.http.put<Product>(`${this.API}/${id}`, product);
   }
 
-  // DELETE
+  // 🗑️ Deletar produto
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
   }
