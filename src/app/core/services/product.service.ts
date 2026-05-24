@@ -10,35 +10,34 @@ import { environment } from '../../../environments/environment';
 })
 export class ProductService {
 
-  // URL base do backend
   private apiUrl = environment.apiUrl;
 
-  // Endpoint correto da API
+  // ✅ endpoint correto
   private readonly API = `${this.apiUrl}/api/products`;
 
   constructor(private http: HttpClient) {}
 
-  // 📋 Listar produtos
-  getProducts(): Observable<Product[]> {
+  // 📋 LISTAR TODOS
+  findAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API);
   }
 
-  // 🔍 Buscar por ID
-  getById(id: number): Observable<Product> {
+  // 🔍 BUSCAR POR ID
+  findById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.API}/${id}`);
   }
 
-  // ➕ Criar produto
+  // ➕ CRIAR
   create(product: Product): Observable<Product> {
     return this.http.post<Product>(this.API, product);
   }
 
-  // ✏️ Atualizar produto
+  // ✏️ ATUALIZAR
   update(id: number, product: Product): Observable<Product> {
     return this.http.put<Product>(`${this.API}/${id}`, product);
   }
 
-  // 🗑️ Deletar produto
+  // 🗑️ DELETAR
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
   }

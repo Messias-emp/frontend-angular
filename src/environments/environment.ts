@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
+  production: false,
   apiUrl: 'https://backend-e-comerce-ma4w.onrender.com'
 };
