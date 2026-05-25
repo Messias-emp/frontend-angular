@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { RegisterComponent } from "../register/register.component";
+
 
 /* =============================
    CONTRATO LOCAL (TIPAGEM)
@@ -19,7 +21,7 @@ interface LoginResponse {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RegisterComponent],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
