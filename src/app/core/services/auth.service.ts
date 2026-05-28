@@ -45,6 +45,21 @@ export class AuthService {
     this.getUserRoleFromToken()
   );
   userRole$ = this.userRoleSubject.asObservable();
+  
+  /* =============================
+   📝 REGISTER
+   ============================= */
+register(name: string, email: string, password: string) {
+
+  return this.http.post(
+    `${this.apiUrl}/auth/register`,
+    {
+      name,
+      email,
+      password
+    }
+  );
+}
 
   /* =============================
      🔐 LOGIN
@@ -55,6 +70,7 @@ export class AuthService {
       password
     });
   }
+
 
   /* =============================
      🪪 TOKEN
