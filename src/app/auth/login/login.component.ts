@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
-import { RegisterComponent } from "../register/register.component";
+
 
 
 /* =============================
@@ -21,7 +21,7 @@ interface LoginResponse {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, RegisterComponent],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
