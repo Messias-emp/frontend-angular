@@ -59,6 +59,14 @@ export const routes: Routes = [
             .then(m => m.LoginComponent)
       },
 
+      //Register de users
+      {
+      path: 'register',
+      loadComponent: () =>
+        import('./auth/register/register.component')
+          .then(m => m.RegisterComponent)
+       },
+
       // 🛒 Carrinho
       {
         path: 'cart',
