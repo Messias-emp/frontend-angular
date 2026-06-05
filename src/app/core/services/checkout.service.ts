@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 export class CheckoutService {
 
   private http = inject(HttpClient);
-  private api = 'http://localhost:8080/orders';
+  private api =
+  'https://backend-e-comerce-ma4w.onrender.com/orders';
 
   checkout(payload: { userEmail: string; total: number }) {
     return this.http.post(`${this.api}/checkout`, payload);

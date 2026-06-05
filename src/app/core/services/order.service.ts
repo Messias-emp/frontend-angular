@@ -7,7 +7,8 @@ import { Order } from '../../shared/models/order.model';
 @Injectable({ providedIn: 'root' })
 export class OrderService {
 
-  private apiUrl = 'http://localhost:8080/orders';
+ private apiUrl =
+  'https://backend-e-comerce-ma4w.onrender.com/orders';
 
   /* =============================
      🔔 ESTADO REATIVO
