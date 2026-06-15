@@ -11,6 +11,7 @@ import { Product } from '../../shared/models/product.model';
 import { BaseChartDirective } from 'ng2-charts';
 import { DashboardService } from '../../core/services/dashboard.service';
 
+
 Chart.register(...registerables);
 
 @Component({
