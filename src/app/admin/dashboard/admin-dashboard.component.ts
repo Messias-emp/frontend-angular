@@ -9,7 +9,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
 import { Product } from '../../shared/models/product.model';
 import { BaseChartDirective } from 'ng2-charts';
-import { DashboardService } from '../../core/services/DashboardService';
+import { DashboardService } from '../../core/services/dashboard.service';
 
 Chart.register(...registerables);
 
