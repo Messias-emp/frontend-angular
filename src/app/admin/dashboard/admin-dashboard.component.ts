@@ -6,12 +6,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterOutlet } from '@angular/router';
-import { OrderService } from '../../core/services/order.service';
-import { Order } from '../../core/services/order.model';
 import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
-import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../shared/models/product.model';
 import { BaseChartDirective } from 'ng2-charts';
+import { DashboardService } from '../../core/services/DashboardService';
 
 Chart.register(...registerables);
 
@@ -25,6 +23,7 @@ Chart.register(...registerables);
   MatListModule,
   MatToolbarModule,
   MatIconModule,
+ 
   BaseChartDirective //  ESSENCIAL PRO GRÁFICO
 
 ],
@@ -45,14 +44,13 @@ export class AdminDashboardComponent implements OnInit {
   totalOrders = 0;
   totalRevenue = 0;
   averageTicket = 0;
-
+  totalUsers = 0;
   // 🔄 Controle de estado (UX)
   loading = true;
 
 constructor(
-  private productService: ProductService,
-  private router: Router,
-  private orderService: OrderService // ✅ ADICIONE ISSO
+  private dashboardService: DashboardService,
+  private router: Router
 ) {}
 
 goToLogin() {
@@ -66,36 +64,30 @@ goToLogin() {
   // 🔥 MÉTODO PRINCIPAL (centraliza tudo)
 private loadDashboardData(): void {
 
-  // 🔹 PRODUTOS
-  this.productService.findAll().subscribe({
-    next: (products: Product[]) => {
+  this.dashboardService.getStats().subscribe({
 
-      this.calculateMetrics(products);
-      this.updateChart();
+    next: (data) => {
 
-    },
-    error: (err) => console.error(err)
-  });
+      this.totalUsers = data.totalUsers;
 
-  // 🔹 PEDIDOS
-  this.orderService.findAll().subscribe({
-    next: (orders: Order[]) => {
+      this.totalProducts = data.totalProducts;
 
-      this.totalOrders = orders.length;
+      this.totalOrders = data.totalOrders;
 
-      this.totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
-
-      this.averageTicket = this.totalOrders > 0
-        ? this.totalRevenue / this.totalOrders
-        : 0;
+      this.totalRevenue = data.totalRevenue;
 
       this.loading = false;
     },
+
     error: (err) => {
+
       console.error(err);
+
       this.loading = false;
     }
+
   });
+
 }
   // 🧠 RESPONSABILIDADE 1: calcular métricas
   private calculateMetrics(products: Product[]): void {
