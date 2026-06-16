@@ -5,7 +5,9 @@ export interface Product {
   id?: number; // opcional para CREATE
   name: string;
   description?: string;
+  details?: string;
   price: number;
+  stock? : number;
   imageUrl?: string;
   active: boolean;
   

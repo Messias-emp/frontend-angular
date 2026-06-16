@@ -34,10 +34,43 @@ import {MatCardModule} from '@angular/material/card';
       <input matInput [(ngModel)]="product.name" name="name" required />
     </mat-form-field>
 
+<mat-form-field class="w-full">
+  <mat-label>Descrição</mat-label>
+  <textarea matInput
+            [(ngModel)]="product.description"
+            name="description">
+  </textarea>
+</mat-form-field>
+
+<mat-form-field class="w-full">
+  <mat-label>Detalhes</mat-label>
+  <textarea matInput
+            [(ngModel)]="product.details"
+            name="details">
+  </textarea>
+</mat-form-field>
+
+  <mat-card-content>
     <mat-form-field class="w-full">
       <mat-label>Preço</mat-label>
-      <input matInput type="number" [(ngModel)]="product.price" name="price" />
+      <input matInput type="number" [(ngModel)]="product.price" name="price"  required/>
     </mat-form-field>
+
+    <mat-form-field class="w-full">
+  <mat-label>Estoque</mat-label>
+  <input matInput
+         type="number"
+         [(ngModel)]="product.stock"
+         name="stock" required>
+</mat-form-field>
+
+<mat-form-field class="w-full">
+  <mat-label>URL da Imagem</mat-label>
+  <input matInput
+         [(ngModel)]="product.imageUrl"
+         name="imageUrl"
+         placeholder="https://site.com/imagem.jpg">
+</mat-form-field>
 
     <mat-checkbox [(ngModel)]="product.active" name="active">
       Produto ativo
@@ -56,9 +89,6 @@ import {MatCardModule} from '@angular/material/card';
     </button>
   </mat-card-actions>
 
-</mat-card>
-
-
   `
 })
 export class ProductFormComponent implements OnInit {
@@ -66,7 +96,10 @@ export class ProductFormComponent implements OnInit {
   product: Product = {
     name: '',
     description: '',
+    details: '',
     price: 0,
+    stock: 0,
+    imageUrl: '',
     active: true
   };
 
