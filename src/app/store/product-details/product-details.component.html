@@ -1,18 +1,27 @@
 <div *ngIf="product as p">
-<h2>{{ product.name }}</h2>
 
-<img *ngIf="product"
-     [src]="product.imageUrl"
-     alt="{{ product.name }}"
-     width="250" />
+  <h2>{{ p.name }}</h2>
 
-<p>{{ product.description }}</p>
+  <img
+    *ngIf="p.imageUrl"
+    [src]="p.imageUrl"
+    [alt]="p.name"
+    width="300">
 
-<strong>R$ {{ product.price }}</strong>
+  <p>{{ p.description }}</p>
 
-<br /><br />
+  <h3>Detalhes</h3>
 
-<button (click)="addToCart()">
-  Adicionar ao carrinho
-</button>
+  <p>{{ p.details }}</p>
+
+  <strong>
+    {{ p.price | currency:'BRL':'symbol':'1.2-2' }}
+  </strong>
+
+  <br><br>
+
+  <button (click)="addToCart()">
+    Adicionar ao carrinho
+  </button>
+
 </div>

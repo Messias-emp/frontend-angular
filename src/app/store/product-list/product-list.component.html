@@ -1,42 +1,43 @@
-<!-- TÍTULO DA LOJA -->
-<h2 class="text-2xl font-semibold mb-6">
-  
-</h2>
+<mat-card
+  *ngFor="let p of products"
+  class="hover:shadow-lg transition">
 
-<!-- GRID DE PRODUTOS -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <!-- IMAGEM DO PRODUTO -->
+  <img
+    *ngIf="p.imageUrl"
+    [src]="p.imageUrl"
+    [alt]="p.name"
+    class="w-full h-56 object-cover">
 
-  <mat-card
-    *ngFor="let p of products"
-    class="hover:shadow-lg transition">
+  <mat-card-content>
+    <h3 class="font-semibold text-lg">
+      {{ p.name }}
+    </h3>
 
-    <mat-card-content>
-      <h3 class="font-semibold text-lg">
-        {{ p.name }}
-      </h3>
+    <p class="text-sm text-gray-600 mt-1">
+      {{ p.description }}
+    </p>
 
-      <p class="text-sm text-gray-600 mt-1">
-        {{ p.description }}
-      </p>
+    <p class="text-green-600 font-bold text-xl mt-3">
+      {{ p.price | currency:'BRL' }}
+    </p>
+  </mat-card-content>
 
-      <p class="text-green-600 font-bold text-xl mt-3">
-        {{ p.price | currency:'BRL' }}
-      </p>
-    </mat-card-content>
+  <mat-card-actions class="flex justify-between">
 
-    <mat-card-actions class="flex justify-between">
-      <button mat-button color="primary">
-        Detalhes
-      </button>
+    <button
+      mat-button
+      color="primary">
+      Detalhes
+    </button>
 
-<button 
-  mat-raised-button 
-  color="accent"
-  (click)="addToCart(p)">
-  Comprar
-</button>
-    </mat-card-actions>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="addToCart(p)">
+      Comprar
+    </button>
 
-  </mat-card>
+  </mat-card-actions>
 
-</div>
+</mat-card>

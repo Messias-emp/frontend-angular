@@ -89,6 +89,14 @@ import {MatCardModule} from '@angular/material/card';
     </button>
   </mat-card-actions>
 
+<div *ngIf="product.imageUrl">
+
+  <img
+    [src]="product.imageUrl"
+    width="200"
+    style="margin-top:20px; border-radius:10px;">
+
+</div>
   `
 })
 export class ProductFormComponent implements OnInit {
