@@ -57,15 +57,16 @@ checkout(): void {
       this.loading = false;
       return;
     }
-
-    const orderRequest = {
-        items: items.map(item => ({
-        productId: item.productId,
-        productName: item.name,
-        quantity: item.quantity,
-        price: item.price
-      }))
-    };
+console.log('Itens do carrinho:', items);
+const orderRequest = {
+  items: items.map(item => ({
+    productId: item.productId,
+    productName: item.name,
+    quantity: item.quantity,
+    price: item.price,
+    imageUrl: item.imageUrl
+  }))
+};
 
     this.orderService.createOrder(orderRequest).subscribe({
       next: () => {
@@ -82,5 +83,6 @@ checkout(): void {
 
   });
 }
+
   
 }

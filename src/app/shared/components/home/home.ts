@@ -25,7 +25,8 @@ export class Home implements OnInit {
       productId: product.id!,
       name: product.name,
       price: product.price,
-      quantity: 1
+      quantity: 1,
+      imageUrl: product.imageUrl
     });
      console.log('Produto adicionado 🛒', product); // simples (depois melhoramos)
   }

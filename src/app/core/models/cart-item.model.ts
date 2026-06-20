@@ -7,8 +7,11 @@ import { Product } from '../../shared/models/product.model';
  */
 export interface CartItem {
   productId: number;
-  name: string;      // 👈 ESTE é o nome correto
+  name: string;
   quantity: number;
   price: number;
+  imageUrl?: string;
 }
+  
+
 

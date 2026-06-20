@@ -8,6 +8,11 @@
 
   <div *ngFor="let product of products"
        class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
+         <img
+    *ngIf="product.imageUrl"
+    [src]="product.imageUrl"
+    [alt]="product.name"
+    class="w-full h-56 object-cover rounded mb-3">
 
     <h3 class="font-bold text-lg mb-2">
       {{ product.name }}

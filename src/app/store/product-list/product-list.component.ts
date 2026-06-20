@@ -47,7 +47,9 @@ addToCart(product: Product) {
     productId: product.id!,
     name: product.name,
     price: product.price,
-    quantity: 1
+    quantity: 1,
+    imageUrl: product.imageUrl  
+    
   };
 
   this.cartService.addItem(cartItem);

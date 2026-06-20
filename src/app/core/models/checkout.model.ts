@@ -3,6 +3,8 @@ export interface CheckoutItemRequest {
   productName: string;
   quantity: number;
   price: number;
+    // NOVO CAMPO PARA URL DA IMAGEM
+    imageUrl?: string;
 }
 
 export interface CheckoutRequest {
