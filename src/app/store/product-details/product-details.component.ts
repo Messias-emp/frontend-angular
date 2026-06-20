@@ -29,12 +29,21 @@ export class ProductDetailComponent implements OnInit {
    * 🛒 Adiciona produto ao carrinho
    * Aqui ocorre a conversão Product → CartItem
    */
-  addToCart(): void {
+addToCart(): void {
 
-    // 🛡️ Proteção defensiva (boa prática)
-    if (!this.product?.id) {
-      console.warn('Produto inválido para carrinho');
-      return;
-    }
+  if (!this.product?.id) {
+    console.warn('Produto inválido para carrinho');
+    return;
   }
+
+  this.cartService.addItem({
+    productId: this.product.id,
+    name: this.product.name,
+    price: this.product.price,
+    quantity: 1,
+    imageUrl: this.product.imageUrl
+  });
+
+  console.log('Produto adicionado ao carrinho', this.product);
+}
 }

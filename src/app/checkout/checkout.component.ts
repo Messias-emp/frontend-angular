@@ -81,6 +81,7 @@ const orderRequest = {
       }
     });
 
+console.log('Pedido enviado:', orderRequest);
   });
 }
 
