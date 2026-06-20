@@ -20,11 +20,15 @@ export interface OrderItem {
   price: number;
 }*/
 export interface OrderItem {
+  
   id: number;
   productId: number;
   productName: string;
   quantity: number;
   price: number;
+  // NOVO CAMPO PARA URL DA IMAGEM
+   imageUrl?: string;
+  
 }
 
 export interface Order {

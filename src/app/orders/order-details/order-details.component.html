@@ -38,6 +38,11 @@
       class="item-card"
       *ngFor="let item of order.items"
     >
+        <img
+    *ngIf="item.imageUrl"
+    [src]="item.imageUrl"
+    [alt]="item.productName"
+    width="120">
 
       <div class="item-info">
 
