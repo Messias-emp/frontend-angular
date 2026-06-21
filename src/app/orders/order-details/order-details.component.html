@@ -1,86 +1,107 @@
 <!-- loading -->
+
 <div *ngIf="loading">
   <p>Carregando pedido...</p>
 </div>
 
 <!-- página do pedido -->
-<div *ngIf="!loading && order" class="order-page">
 
-  <!-- CABEÇALHO DO PEDIDO -->
+<div *ngIf="!loading && order as currentOrder" class="order-page">
+
+  <!-- CABEÇALHO -->
+
   <div class="order-header">
 
-    <div>
-      <strong>Pedido:</strong>
-      #{{order.id}}
-    </div>
+```
+<div>
+  <strong>Pedido:</strong>
+  #{{ currentOrder.id }}
+</div>
 
-    <div>
-      <strong>Data:</strong>
-      {{order.createdAt | date:'dd/MM/yyyy'}}
-    </div>
+<div>
+  <strong>Data:</strong>
+  {{ currentOrder.createdAt | date:'dd/MM/yyyy' }}
+</div>
 
-    <div>
-      <strong>Status:</strong>
-      <span class="status">
-        {{order.status}}
-      </span>
-    </div>
+<div>
+  <strong>Status:</strong>
+  <span class="status">
+    {{ currentOrder.status }}
+  </span>
+</div>
+```
 
   </div>
 
+  <!-- ITENS -->
 
-  <!-- LISTA DE ITENS -->
   <div class="order-items">
 
-    <h3>Itens do Pedido</h3>
+```
+<h3>Itens do Pedido</h3>
 
-    <div
-      class="item-card"
-      *ngFor="let item of order.items"
-    >
-        <img
+<div
+  class="item-card"
+  *ngFor="let item of currentOrder.items">
+
+  <!-- DEBUG -->
+  <p style="background:yellow;color:black;padding:5px;">
+    URL DA IMAGEM:
+    {{ item.imageUrl }}
+  </p>
+
+  <!-- IMAGEM -->
+  <img
     *ngIf="item.imageUrl"
     [src]="item.imageUrl"
     [alt]="item.productName"
-    width="120">
+    width="250"
+    style="
+      border:5px solid red;
+      display:block;
+      margin-bottom:15px;
+    ">
 
-      <div class="item-info">
+  <div class="item-info">
 
-        <h4>{{item.productName}}</h4>
+    <h4>{{ item.productName }}</h4>
 
-        <p>
-          Quantidade: {{item.quantity}}
-        </p>
+    <p>
+      Quantidade: {{ item.quantity }}
+    </p>
 
-        <p>
-          Preço unitário:
-          {{item.price | currency:'BRL'}}
-        </p>
-
-      </div>
-
-      <div class="item-total">
-
-        {{item.price * item.quantity | currency:'BRL'}}
-
-      </div>
-
-    </div>
+    <p>
+      Preço unitário:
+      {{ item.price | currency:'BRL' }}
+    </p>
 
   </div>
 
+  <div class="item-total">
 
-  <!-- RESUMO DO PEDIDO -->
+    {{ item.price * item.quantity | currency:'BRL' }}
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- RESUMO -->
+
   <div class="order-summary">
 
-    <h3>Resumo do Pedido</h3>
+```
+<h3>Resumo do Pedido</h3>
 
-    <p>
-      Total:
-      <strong>
-        {{order.total | currency:'BRL'}}
-      </strong>
-    </p>
+<p>
+  Total:
+  <strong>
+    {{ currentOrder.total | currency:'BRL' }}
+  </strong>
+</p>
+```
 
   </div>
 
