@@ -8,7 +8,9 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   template: `
  
-     <router-outlet></router-outlet>
+<div class="app-shell">
+  <router-outlet></router-outlet>
+</div>
   `,
  
 })

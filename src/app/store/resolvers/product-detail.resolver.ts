@@ -8,6 +8,7 @@ import { Product } from '../../shared/models/product.model';
  * 🔹 Buscar um produto específico pelo ID da rota
  * 🔹 Garantir que a tela de detalhes já abra com dados
  */
+
 export const productDetailResolver: ResolveFn<Product> = (route) => {
 
   // 🔌 Injeta o serviço de produtos

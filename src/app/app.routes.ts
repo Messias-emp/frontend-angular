@@ -11,7 +11,6 @@ import { PublicLayoutComponent } from './public/layout/public-layout.component/p
 import { Home } from './shared/components/home/home';
 
 
-
 export const routes: Routes = [
 
   // =====================================================
@@ -28,17 +27,6 @@ export const routes: Routes = [
     products: productsResolver
   }
 },
-
-      // 🏠 Home (lista produtos)
-      {
-        path: '',
-        loadComponent: () =>
-          import('./store/product-list/product-list.component')
-            .then(m => m.ProductListComponent),
-        resolve: {
-          products: productsResolver
-        }
-      },
 
       // 🔍 Detalhe do Produto
       {

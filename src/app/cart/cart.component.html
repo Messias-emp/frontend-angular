@@ -1,24 +1,69 @@
-<table>
-  <tr *ngFor="let item of items$ | async">
-    <td>{{ item.name }}</td>
-    <td>{{ item.quantity }}</td>
-    <td>{{ item.price | currency:'BRL' }}</td>
-    <td>
-      <button (click)="remove(item.productId)">
-        Remover
+<div class="max-w-5xl mx-auto p-6">
+
+  <h2 class="text-3xl font-bold mb-6">
+    Meu Carrinho
+  </h2>
+
+  <div
+    *ngFor="let item of items$ | async"
+    class="bg-white shadow rounded-lg p-4 mb-4 flex items-center gap-4">
+
+    <img
+      [src]="item.imageUrl"
+      class="product-image">
+
+    <div class="flex-1">
+
+      <h3 class="font-semibold">
+        {{ item.name }}
+      </h3>
+
+      <p>
+        Quantidade: {{ item.quantity }}
+      </p>
+
+      <p class="text-green-600 font-bold">
+        {{ item.price | currency:'BRL' }}
+      </p>
+
+    </div>
+
+    <button
+      (click)="remove(item.productId)"
+      class="bg-red-500 text-white px-4 py-2 rounded">
+
+      Remover
+    </button>
+
+  </div>
+
+  <div class="bg-white shadow rounded-lg p-6 mt-6">
+
+    <h3 class="text-2xl font-bold">
+
+      Total:
+      {{ getTotal() | currency:'BRL' }}
+
+    </h3>
+
+    <div class="mt-4 flex gap-4">
+
+      <button
+        (click)="clear()"
+        class="bg-gray-500 text-white px-6 py-2 rounded">
+
+        Limpar
       </button>
-    </td>
-  </tr>
-</table>
 
-<p>
-  <strong>Total:</strong>
-  {{ getTotal() | currency:'BRL' }}
-</p>
+      <button
+        routerLink="/checkout"
+        class="bg-green-600 text-white px-6 py-2 rounded">
 
-<button
-  routerLink="/checkout"
-  [disabled]="(items$ | async)?.length === 0"
->
-  Ir para Checkout
-</button>
+        Finalizar Compra
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

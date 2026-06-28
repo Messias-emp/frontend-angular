@@ -1,63 +1,90 @@
-<nav class="bg-white shadow-md px-6 py-4 flex items-center gap-12 ">
-  <!-- 🏷 Logo -->
-  <a
-    routerLink="/"
-    class="text-x1 font-bold text-green-600 hover:text-green-700">
-    Home
-  </a>
+<nav class="bg-white shadow-md px-8 py-4">
 
-  <!-- 🔗 Links -->
-  <div class="flex items-center gap-200">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
 
+    <!-- Logo -->
     <a
-      routerLink="/cart"
-      class="relative text-gray-700 hover:text-green-600 font-medium">>
-      🛒 Carrinho
-      <span
-        *ngIf="cartCount$ | async as crtCount"
-        class="absolute -top-2 -right-3 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-        {{ crtCount }}
-      </span>
+      routerLink="/"
+      class="text-2xl font-bold text-green-600 hover:text-green-700">
+      TechStore
     </a>
 
-    <a
-      routerLink="/meus-pedidos"
-      class="text-gray-700 hover:text-green-600 font-medium">
-      Meus pedidos
-    </a>
+    <!-- Menu -->
+    <div class="flex items-center gap-8">
 
-    <!-- 👤 Usuário logado -->
-    <ng-container *ngIf="isLoggedIn$ | async; else loggedOut">
-
-      <span class="text-sm text-gray-600">
-        Olá, <strong>{{ userName$ | async }}</strong>
-      </span>
-
-      <!-- 🔐 Admin -->
       <a
-        *ngIf="isAdmin()"
-        routerLink="/admin/products"
-        class="text-sm text-blue-600 hover:underline">
-        Admin
+        routerLink="/"
+        class="text-gray-700 hover:text-green-600 font-medium">
+        Home
       </a>
 
-      <button
-        (click)="logout()"
-        class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg text-sm">
-        Sair
-      </button>
-
-    </ng-container>
-
-    <!-- 🚪 Não logado -->
-    <ng-template #loggedOut>
       <a
-        routerLink="/login"
-        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm">
-        Entrar
+        routerLink="/cart"
+        class="relative text-gray-700 hover:text-green-600 font-medium">
+
+        🛒 Carrinho
+
+        <span
+          *ngIf="cartCount$ | async as cartCount"
+          class="absolute -top-2 -right-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+
+          {{ cartCount }}
+
+        </span>
+
       </a>
-    </ng-template>
+
+      <a
+        routerLink="/meus-pedidos"
+        class="text-gray-700 hover:text-green-600 font-medium">
+
+        Meus Pedidos
+
+      </a>
+
+      <!-- Usuário -->
+      <ng-container *ngIf="isLoggedIn$ | async; else loggedOut">
+
+        <span class="text-sm text-gray-600">
+          Olá,
+          <strong>{{ userName$ | async }}</strong>
+        </span>
+
+        <a
+          *ngIf="isAdmin()"
+          routerLink="/admin/products"
+          class="text-blue-600 hover:text-blue-700 font-medium">
+
+          Admin
+
+        </a>
+
+        <button
+          (click)="logout()"
+          class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+
+          Sair
+
+        </button>
+
+      </ng-container>
+
+      <ng-template #loggedOut>
+
+        <a
+          routerLink="/login"
+          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+
+          Entrar
+
+        </a>
+
+      </ng-template>
+
+    </div>
 
   </div>
+
 </nav>
+
 <app-home-banner></app-home-banner>

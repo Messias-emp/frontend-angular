@@ -4,18 +4,19 @@ import { ActivatedRoute } from '@angular/router';
 import { HomeBanner } from '../home-banner/home-banner';
 import { Product } from '../../models/product.model';
 import { CartService } from './../../../core/services/cart.service';
+import { ProductCardComponent } from '../product-card/product-card';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, HomeBanner],
-  
-templateUrl: './home.html',
-  styleUrl: './home.scss',
+  standalone: true,
+  imports: [CommonModule, HomeBanner,  ProductCardComponent],
+  templateUrl: './home.html',
+  styleUrls: ['./home.scss']
 })
 export class Home implements OnInit {
   products: Product[] = [];
 
- constructor(private route: ActivatedRoute, private cartService: CartService  ) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService) { }
 
   addToCart(product: Product) {
 
@@ -28,7 +29,7 @@ export class Home implements OnInit {
       quantity: 1,
       imageUrl: product.imageUrl
     });
-     console.log('Produto adicionado 🛒', product); // simples (depois melhoramos)
+    console.log('Produto adicionado 🛒', product); // simples (depois melhoramos)
   }
   ngOnInit(): void {
     this.products = this.route.snapshot.data['products'];

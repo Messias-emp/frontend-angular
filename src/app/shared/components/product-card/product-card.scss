@@ -1,0 +1,26 @@
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-image img {
+  width: 10%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 12px;
+}
+
+.price {
+  color: #16a34a;
+  font-weight: bold;
+}
