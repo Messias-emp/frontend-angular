@@ -3,14 +3,24 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { map, Observable } from 'rxjs';
-import { HomeBanner } from '../home-banner/home-banner';
 import { CartService } from '../../../core/services/cart.service';
+import { MatIcon, MatIconModule } from "@angular/material/icon";
+import { MatToolbar, MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, HomeBanner ],
+  imports: [CommonModule, RouterModule, MatIcon, MatToolbar,MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatBadgeModule,
+  MatMenuModule],
   templateUrl: './navbar.component.html'
 })
 

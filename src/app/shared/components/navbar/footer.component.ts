@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <footer class="footer">
-      <div>© {{ year }} - E-commerce Tutorial</div>
+      <div>© {{ year }} - Projeto E-commerce </div>
     </footer>
   `,
   styles: [`

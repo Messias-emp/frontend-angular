@@ -1,89 +1,78 @@
-<nav class="bg-white shadow-md px-8 py-4">
+<mat-toolbar class="navbar">
 
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-
-    <!-- Logo -->
-    <a
-      routerLink="/"
-      class="text-2xl font-bold text-green-600 hover:text-green-700">
-      TechStore
+    <a routerLink="/" class="logo">
+        TechStore
     </a>
 
-    <!-- Menu -->
-    <div class="flex items-center gap-8">
+    <span class="spacer"></span>
 
-      <a
-        routerLink="/"
-        class="text-gray-700 hover:text-green-600 font-medium">
-        Home
-      </a>
+    <nav class="menu">
 
-      <a
+        <a mat-button routerLink="/">
+            Home
+        </a>
+
+        <a mat-button routerLink="/meus-pedidos">
+            Pedidos
+        </a>
+
+    </nav>
+
+    <button
+        mat-icon-button
         routerLink="/cart"
-        class="relative text-gray-700 hover:text-green-600 font-medium">
+        [matBadge]="cartCount$ | async"
+        matBadgeColor="warn">
 
-        🛒 Carrinho
+        <mat-icon>
+            shopping_cart
+        </mat-icon>
 
-        <span
-          *ngIf="cartCount$ | async as cartCount"
-          class="absolute -top-2 -right-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+    </button>
 
-          {{ cartCount }}
+    <button
+        mat-button
+        [matMenuTriggerFor]="userMenu">
 
-        </span>
+        <mat-icon>
+            account_circle
+        </mat-icon>
 
-      </a>
+        {{ userName$ | async }}
 
-      <a
-        routerLink="/meus-pedidos"
-        class="text-gray-700 hover:text-green-600 font-medium">
+    </button>
 
-        Meus Pedidos
+</mat-toolbar>
 
-      </a>
+<mat-menu #userMenu="matMenu">
 
-      <!-- Usuário -->
-      <ng-container *ngIf="isLoggedIn$ | async; else loggedOut">
+    <button mat-menu-item routerLink="/profile">
 
-        <span class="text-sm text-gray-600">
-          Olá,
-          <strong>{{ userName$ | async }}</strong>
-        </span>
+        <mat-icon>person</mat-icon>
 
-        <a
-          *ngIf="isAdmin()"
-          routerLink="/admin/products"
-          class="text-blue-600 hover:text-blue-700 font-medium">
+        Perfil
 
-          Admin
+    </button>
 
-        </a>
+    <button
+        *ngIf="isAdmin()"
+        mat-menu-item
+        routerLink="/admin/products">
 
-        <button
-          (click)="logout()"
-          class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+        <mat-icon>admin_panel_settings</mat-icon>
 
-          Sair
+        Administração
 
-        </button>
+    </button>
 
-      </ng-container>
+    <button
+        mat-menu-item
+        (click)="logout()">
 
-      <ng-template #loggedOut>
+        <mat-icon>logout</mat-icon>
 
-        <a
-          routerLink="/login"
-          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+        Sair
 
-          Entrar
+    </button>
 
-        </a>
-
-      </ng-template>
-
-    </div>
-
-  </div>
-
-</nav>
-
+</mat-menu>
