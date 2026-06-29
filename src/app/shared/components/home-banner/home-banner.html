@@ -1,26 +1,22 @@
-<mat-card
-  class="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-2xl shadow-lg">
+<mat-card class="home-banner">
 
-  <div class="flex flex-col md:flex-row items-center justify-between p-8 gap-6">
+  <div class="banner-content">
 
-    <!-- TEXTO -->
-    <div>
-      <h1 class="text-3xl font-bold mb-2">
-        {{ title }}
-      </h1>
+    <div class="banner-text">
+      <h1>{{ title }}</h1>
 
-      <p class="text-lg opacity-90">
+      <p>
         {{ subtitle }}
       </p>
     </div>
 
-    <!-- CTA -->
     <button
       mat-raised-button
       color="primary"
-      class="bg-white text-green-700 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100">
+      class="banner-button">
       {{ ctaText }}
     </button>
 
   </div>
+
 </mat-card>
