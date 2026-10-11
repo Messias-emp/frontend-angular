@@ -40,3 +40,19 @@ export interface Order {
   createdAt: string;
   items: OrderItem[];
 }
+
+/**
+ * Representa a requisição de pedido enviada ao backend
+ * Espelha os DTOs CheckoutRequest e CheckoutItemRequest do Spring Boot
+ */
+export interface OrderItemRequest {
+  productId: number;
+  productName: string;
+  quantity: number;
+  price: number;
+  imageUrl?: string;
+}
+
+export interface OrderRequest {
+  items: OrderItemRequest[];
+}

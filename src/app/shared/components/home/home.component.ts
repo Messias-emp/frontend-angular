@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HomeBanner } from '../home-banner/home-banner';
+import { HomeBannerComponent } from '../home-banner/home-banner.component';
 import { Product } from '../../models/product.model';
 import { CartService } from './../../../core/services/cart.service';
-import { ProductCardComponent } from '../product-card/product-card';
+import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HomeBanner,  ProductCardComponent],
-  templateUrl: './home.html',
-  styleUrls: ['./home.scss']
+  imports: [CommonModule, HomeBannerComponent, ProductCardComponent],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class Home implements OnInit {
+export class HomeComponent implements OnInit {
   products: Product[] = [];
 
   constructor(private route: ActivatedRoute, private cartService: CartService) { }
@@ -31,6 +31,7 @@ export class Home implements OnInit {
     });
     console.log('Produto adicionado 🛒', product); // simples (depois melhoramos)
   }
+
   ngOnInit(): void {
     this.products = this.route.snapshot.data['products'];
   }

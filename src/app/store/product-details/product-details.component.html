@@ -16,10 +16,19 @@
     {{ p.price | currency:'BRL' }}
   </strong>
 
-
+  <p *ngIf="p.stock !== undefined">Estoque: {{ p.stock }}</p>
+  <p *ngIf="p.active === false" style="color:#ef4444;">Indisponível</p>
 
   <button (click)="addToCart()">
     Adicionar ao carrinho
   </button>
+
+  <a routerLink="/checkout" class="checkout-btn" (click)="finalizarCompra()">
+    Finalizar Compra
+  </a>
+
+  <div *ngIf="total > 0" class="total-info">
+    <strong>Total estimado: {{ total | currency:'BRL' }}</strong>
+  </div>
 
 </div>

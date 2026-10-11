@@ -1,13 +1,169 @@
+/* =============================
+   LAYOUT ADMIN MODERNO
+   ============================= */
+
 .admin-container {
   height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
 }
 
-mat-sidenav {
-  width: 240px;
-  gap: 16px;
+/* =============================
+   SIDEBAR
+   ============================= */
+.admin-sidenav {
+  width: 260px;
+  background: linear-gradient(180deg, #1e1b4b 0%, #312e81 50%, #3730a3 100%) !important;
+  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.15);
+  display: flex;
+  flex-direction: column;
+  border-right: none;
+
+  .mat-m3-drawer {
+    background: transparent;
+  }
 }
 
-mat-sidenav-content {
+/* ---- Brand ---- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #818cf8, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+
+  mat-icon {
+    color: #fff;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: #a5b4fc;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ---- Nav ---- */
+.nav-list {
+  padding: 16px 12px;
+  flex: 1;
+}
+
+.nav-item {
+  position: relative;
+  border-radius: 12px !important;
+  margin-bottom: 4px;
+  padding: 12px 16px !important;
+  color: #c7d2fe !important;
+  transition: all 0.2s ease;
+  overflow: hidden;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+
+    .nav-icon {
+      color: #fff;
+    }
+  }
+}
+
+.nav-icon {
+  color: #a5b4fc;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.nav-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ---- Footer ---- */
+.sidenav-footer {
+  padding: 16px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logout-btn {
+  width: 100%;
+  border-radius: 12px;
+  color: #c7d2fe !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px !important;
+
+  &:hover {
+    background: rgba(244, 63, 94, 0.15) !important;
+    color: #fda4af !important;
+
+    mat-icon {
+      color: #fda4af;
+    }
+  }
+
+  mat-icon {
+    color: #a5b4fc;
+  }
+}
+
+/* =============================
+   CONTEÚDO
+   ============================= */
+.sidenav-content {
   padding: 24px;
-  background: #f3f4f6; /* cinza leve */
+  background: transparent;
+}
+
+/* =============================
+   RESPONSIVO
+   ============================= */
+@media (max-width: 768px) {
+  .admin-sidenav {
+    width: 200px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .sidenav-content {
+    padding: 16px;
+  }
 }

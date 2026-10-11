@@ -21,7 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
   MatToolbarModule,
   MatBadgeModule,
   MatMenuModule],
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
 
 export class NavbarComponent implements OnInit {

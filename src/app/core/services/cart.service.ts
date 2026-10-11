@@ -42,6 +42,50 @@ export class CartService {
   }
 
   /**
+   * ➕ Aumenta a quantidade de um item
+   */
+  incrementItem(productId: number): void {
+    const items = this._items.value;
+    const item = items.find(i => i.productId === productId);
+    if (item) {
+      item.quantity += 1;
+      this._items.next([...items]);
+    }
+  }
+
+  /**
+   * ➖ Diminui a quantidade de um item (remove quando chegar a 0)
+   */
+  decrementItem(productId: number): void {
+    const items = this._items.value;
+    const item = items.find(i => i.productId === productId);
+    if (!item) return;
+
+    if (item.quantity <= 1) {
+      this.removeItem(productId);
+    } else {
+      item.quantity -= 1;
+      this._items.next([...items]);
+    }
+  }
+
+  /**
+   * Atualiza a quantidade de um item
+   */
+  setQuantity(productId: number, quantity: number): void {
+    if (quantity <= 0) {
+      this.removeItem(productId);
+      return;
+    }
+    const items = this._items.value;
+    const item = items.find(i => i.productId === productId);
+    if (item) {
+      item.quantity = quantity;
+      this._items.next([...items]);
+    }
+  }
+
+  /**
    * 🧹 Limpa o carrinho
    */
   clear(): void {

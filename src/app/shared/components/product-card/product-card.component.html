@@ -1,0 +1,42 @@
+<article class="product-card">
+
+  <div class="product-image">
+    <img [src]="product.imageUrl" [alt]="product.name">
+
+    <!-- Badge de estoque -->
+    <span
+      class="stock-badge"
+      [class.stock-low]="product.stock !== undefined && product.stock <= 5"
+      [class.stock-ok]="product.stock === undefined || product.stock > 5">
+      {{ product.stock === undefined ? 'Disponível' : (product.stock <= 5 ? 'Últimas ' + product.stock : 'Em estoque') }}
+    </span>
+
+    <!-- Badge de inativo -->
+    <div *ngIf="!product.active" class="inactive-badge">
+      Indisponível
+    </div>
+  </div>
+
+  <div class="product-info">
+
+    <h3>{{ product.name }}</h3>
+
+    <p class="description" *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <div class="price-row">
+      <p class="price">{{ product.price | currency:'BRL' }}</p>
+    </div>
+
+    <button
+      class="buy-btn"
+      (click)="comprar()"
+      [disabled]="!product.active">
+      <mat-icon>shopping_cart</mat-icon>
+      {{ product.active ? 'Comprar' : 'Indisponível' }}
+    </button>
+
+  </div>
+
+</article>

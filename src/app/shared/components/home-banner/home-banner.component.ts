@@ -6,10 +6,10 @@ import { MatCardModule } from '@angular/material/card';
 @Component({
   selector: 'app-home-banner',
   imports: [CommonModule, MatCardModule, MatButtonModule],
-  templateUrl: './home-banner.html',
-  styleUrl: './home-banner.scss',
+  templateUrl: './home-banner.component.html',
+  styleUrl: './home-banner.component.scss',
 })
-export class HomeBanner {
+export class HomeBannerComponent {
 
    // 🎯 Dados podem virar dinâmicos no futuro (API / CMS)
    title = "Promoção de Tecnologia";

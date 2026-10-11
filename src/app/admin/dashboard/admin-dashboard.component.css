@@ -1,0 +1,264 @@
+/* =============================
+   DASHBOARD MODERNA
+   ============================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  padding: 24px;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* =============================
+   HEADER
+   ============================= */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding: 0 4px;
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.welcome-text {
+  margin: 4px 0 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =============================
+   LOADING
+   ============================= */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+}
+
+.loading-container p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =============================
+   GRIDS
+   ============================= */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.metrics-grid.secondary {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 28px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* =============================
+   CARDS DE MÉTRICAS
+   ============================= */
+.metric-card {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10) !important;
+}
+
+/* Ícone */
+.metric-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metric-icon mat-icon {
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+  color: #ffffff;
+}
+
+/* Info */
+.metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.metric-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Temas por cor ---- */
+
+/* Usuários - azul */
+.metric-users .metric-icon { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.metric-users::before { background: #3b82f6; }
+
+/* Produtos - violeta */
+.metric-products .metric-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.metric-products::before { background: #8b5cf6; }
+
+/* Pedidos - rosa */
+.metric-orders .metric-icon { background: linear-gradient(135deg, #ec4899, #db2777); }
+.metric-orders::before { background: #ec4899; }
+
+/* Faturamento - esmeralda */
+.metric-revenue .metric-icon { background: linear-gradient(135deg, #10b981, #059669); }
+.metric-revenue::before { background: #10b981; }
+
+/* Ativos - verde */
+.metric-active .metric-icon { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.metric-active::before { background: #22c55e; }
+
+/* Inativos - vermelho */
+.metric-inactive .metric-icon { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+.metric-inactive::before { background: #f43f5e; }
+
+/* Ticket - âmbar */
+.metric-ticket .metric-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.metric-ticket::before { background: #f59e0b; }
+
+/* =============================
+   CARDS DE GRÁFICOS
+   ============================= */
+.chart-card {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+  padding: 20px;
+}
+
+.chart-card .mat-m3-card-header {
+  display: block;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.chart-card .mat-m3-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.chart-icon {
+  color: #6366f1;
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 260px;
+  width: 100%;
+}
+
+.chart-tall {
+  height: 300px;
+}
+
+.chart-wide {
+  grid-column: span 2;
+}
+
+/* =============================
+   RESPONSIVO
+   ============================= */
+@media (max-width: 900px) {
+  .chart-wide {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  :host {
+    padding: 16px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .metrics-grid,
+  .metrics-grid.secondary,
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-value {
+    font-size: 22px;
+  }
+
+  .chart-wrapper {
+    height: 220px;
+  }
+
+  .chart-tall {
+    height: 260px;
+  }
+}

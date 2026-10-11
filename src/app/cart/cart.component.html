@@ -1,69 +1,135 @@
-<div class="max-w-5xl mx-auto p-6">
+<div class="cart-wrapper">
 
-  <h2 class="text-3xl font-bold mb-6">
-    Meu Carrinho
-  </h2>
+  <!-- ========================= -->
+  <!-- 🛒 HEADER -->
+  <!-- ========================= -->
+  <div class="cart-header">
+    <h2>
+      <mat-icon>shopping_cart</mat-icon>
+      Meu Carrinho
+    </h2>
+    <span class="cart-count" *ngIf="(items$ | async)?.length as items">
+      {{ getCount() }} {{ getCount() === 1 ? 'item' : 'itens' }}
+    </span>
+  </div>
 
-  <div
-    *ngFor="let item of items$ | async"
-    class="bg-white shadow rounded-lg p-4 mb-4 flex items-center gap-4">
+  <!-- ========================= -->
+  <!-- 📦 LISTA DE ITENS -->
+  <!-- ========================= -->
+  <div class="cart-items" *ngIf="(items$ | async)?.length; else emptyCart">
 
-    <img
-      [src]="item.imageUrl"
-      class="product-image">
+    <div
+      *ngFor="let item of items$ | async; trackBy: trackByProductId"
+      class="cart-item">
 
-    <div class="flex-1">
+      <!-- Imagem -->
+      <div class="item-image">
+        <img
+          *ngIf="item.imageUrl; else noImage"
+          [src]="item.imageUrl"
+          [alt]="item.name">
+        <ng-template #noImage>
+          <mat-icon style="font-size:40px; width:40px; height:40px; color:#94a3b8;">image</mat-icon>
+        </ng-template>
+      </div>
 
-      <h3 class="font-semibold">
-        {{ item.name }}
-      </h3>
+      <!-- Info -->
+      <div class="item-info">
+        <h3 class="item-name">{{ item.name }}</h3>
+        <p class="item-price">{{ formatPrice(item.price) }}</p>
+        <p class="item-subtotal">
+          Subtotal: <strong>{{ formatPrice(item.price * item.quantity) }}</strong>
+        </p>
+      </div>
 
-      <p>
-        Quantidade: {{ item.quantity }}
-      </p>
+      <!-- Ações -->
+      <div class="item-actions">
 
-      <p class="text-green-600 font-bold">
-        {{ item.price | currency:'BRL' }}
-      </p>
+        <!-- Quantidade -->
+        <div class="qty-control">
+          <button
+            class="qty-btn"
+            (click)="decrement(item)"
+            aria-label="Diminuir quantidade">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span class="qty-value">{{ item.quantity }}</span>
+          <button
+            class="qty-btn"
+            (click)="increment(item)"
+            aria-label="Aumentar quantidade">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <!-- Remover -->
+        <button
+          class="remove-btn"
+          (click)="remove(item.productId)">
+          <mat-icon>delete_outline</mat-icon>
+          Remover
+        </button>
+
+      </div>
 
     </div>
 
-    <button
-      (click)="remove(item.productId)"
-      class="bg-red-500 text-white px-4 py-2 rounded">
-
-      Remover
-    </button>
-
   </div>
 
-  <div class="bg-white shadow rounded-lg p-6 mt-6">
+  <!-- ========================= -->
+  <!-- 🧾 RESUMO -->
+  <!-- ========================= -->
+  <aside class="cart-summary" *ngIf="(items$ | async)?.length">
 
-    <h3 class="text-2xl font-bold">
-
-      Total:
-      {{ getTotal() | currency:'BRL' }}
-
+    <h3 class="summary-title">
+      <mat-icon>receipt_long</mat-icon>
+      Resumo
     </h3>
 
-    <div class="mt-4 flex gap-4">
-
-      <button
-        (click)="clear()"
-        class="bg-gray-500 text-white px-6 py-2 rounded">
-
-        Limpar
-      </button>
-
-      <button
-        routerLink="/checkout"
-        class="bg-green-600 text-white px-6 py-2 rounded">
-
-        Finalizar Compra
-      </button>
-
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <strong>{{ formatPrice(getTotal()) }}</strong>
     </div>
 
-  </div>
+    <div class="summary-row">
+      <span>Frete</span>
+      <strong style="color: #10b981;">Grátis</strong>
+    </div>
+
+    <mat-divider class="summary-divider"></mat-divider>
+
+    <div class="summary-total">
+      <span>Total</span>
+      <span class="total-value">{{ formatPrice(getTotal()) }}</span>
+    </div>
+
+    <a routerLink="/checkout" class="checkout-btn">
+      <mat-icon>credit_card</mat-icon>
+      Finalizar Compra
+    </a>
+
+    <button class="clear-btn" (click)="clear()">
+      <mat-icon>delete_sweep</mat-icon>
+      Limpar Carrinho
+    </button>
+
+  </aside>
+
+  <!-- ========================= -->
+  <!-- 🛍️ CARRINHO VAZIO -->
+  <!-- ========================= -->
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <div class="empty-icon">
+        <mat-icon>shopping_cart</mat-icon>
+      </div>
+      <h3>Seu carrinho está vazio</h3>
+      <p>Explore nossos produtos e encontre o que você procura.</p>
+      <a routerLink="/" class="shop-btn">
+        <mat-icon>storefront</mat-icon>
+        Continuar Comprando
+      </a>
+    </div>
+  </ng-template>
 
 </div>

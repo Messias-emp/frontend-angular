@@ -73,15 +73,14 @@ const orderRequest = {
         this.cartService.clear();
         this.loading = false;
         this.router.navigate(['/meus-pedidos']);
-
       },
-      error: () => {
+      error: (err: any) => {
         this.loading = false;
-        this.errorMessage = 'Erro ao finalizar pedido';
+        const msg = err?.error?.message || err?.message || 'Erro ao finalizar pedido';
+        this.errorMessage = `Erro ao finalizar pedido: ${msg}`;
+        console.error('Erro no checkout:', err);
       }
     });
-
-console.log('Pedido enviado:', orderRequest);
   });
 }
 

@@ -1,0 +1,70 @@
+<mat-sidenav-container class="admin-container">
+
+  <!-- 🧭 MENU LATERAL -->
+  <mat-sidenav mode="side" opened class="admin-sidenav">
+
+    <!-- Logo / Brand -->
+    <div class="brand">
+      <div class="brand-logo">
+        <mat-icon>storefront</mat-icon>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">TechStore</span>
+        <span class="brand-sub">Admin</span>
+      </div>
+    </div>
+
+    <!-- Navegação -->
+    <mat-nav-list class="nav-list">
+
+      <a mat-list-item
+         routerLink="dashboard"
+         routerLinkActive="active"
+         class="nav-item">
+
+        <mat-icon class="nav-icon">dashboard</mat-icon>
+        <span class="nav-label">Dashboard</span>
+
+        <span class="nav-highlight"></span>
+      </a>
+
+      <a mat-list-item
+         routerLink="products"
+         routerLinkActive="active"
+         class="nav-item">
+
+        <mat-icon class="nav-icon">inventory_2</mat-icon>
+        <span class="nav-label">Produtos</span>
+
+        <span class="nav-highlight"></span>
+      </a>
+
+      <a mat-list-item
+         routerLink="orders"
+         routerLinkActive="active"
+         class="nav-item">
+
+        <mat-icon class="nav-icon">reorder</mat-icon>
+        <span class="nav-label">Pedidos</span>
+
+        <span class="nav-highlight"></span>
+      </a>
+
+    </mat-nav-list>
+
+    <!-- Footer -->
+    <div class="sidenav-footer">
+      <button mat-menu-item (click)="goToLogin()" class="logout-btn">
+        <mat-icon>logout</mat-icon>
+        <span>Voltar</span>
+      </button>
+    </div>
+
+  </mat-sidenav>
+
+  <!-- 📄 CONTEÚDO -->
+  <mat-sidenav-content class="sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

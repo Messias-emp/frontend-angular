@@ -7,8 +7,8 @@ import { productsResolver } from './store/resolvers/products.resolver';
 import { productDetailResolver } from './store/resolvers/product-detail.resolver';
 
 import { AdminLayoutComponent } from './admin/layout/admin-layout.component';
-import { PublicLayoutComponent } from './public/layout/public-layout.component/public-layout-component';
-import { Home } from './shared/components/home/home';
+import { PublicLayoutComponent } from './public/layout/public-layout.component';
+import { HomeComponent } from './shared/components/home/home.component';
 
 
 export const routes: Routes = [
@@ -22,7 +22,7 @@ export const routes: Routes = [
     children: [
       {
   path: '',
-  component: Home,
+  component: HomeComponent,
   resolve: {
     products: productsResolver
   }
