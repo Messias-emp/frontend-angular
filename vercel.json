@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://backend-ecommerce-render.onrender.com/api/$1" },
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "outputDirectory": "dist/app-loja-virtual/browser",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build -- --configuration production",
+  "devCommand": "npm run start",
+  "framework": "angular"
+}
