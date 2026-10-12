@@ -1,59 +1,38 @@
-# AppLojaVirtual
+# 🛍️ E-Commerce Store (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Aplicação web moderna de e-commerce desenvolvida em **Angular** (Standalone Components), consumindo uma API REST em Spring Boot. O projeto conta com rotas protegidas por Guards, interceptores HTTP para injeção automática de tokens JWT, gerenciamento reativo de estado e design responsivo.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Tecnologias Utilizadas
 
-```bash
-ng serve
-```
+- **Angular 18+** (Standalone Components & Signals/RxJS)
+- **TypeScript**
+- **Tailwind CSS / CSS Moderno**
+- **RxJS** (Programação reativa para estados globais e carrinho)
+- **JWT Decode** (Manipulação e leitura de claims de tokens no client-side)
+- **Vercel** (Hospedagem e CI/CD contínuo)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ✨ Funcionalidades
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Catálogo de Produtos**: Listagem dinâmica consumindo a API REST.
+- **Autenticação Segura**: Telas de Login e Registro integradas com JWT.
+- **Controle de Acesso por Perfil**: Redirecionamento automático e proteção de rotas para clientes e administradores.
+- **Gestão de Pedidos**: Acompanhamento de pedidos do usuário logado (`Meus Pedidos`) e fluxo de checkout.
+- **Tratamento de Erros**: Interceptadores globais para falhas de rede e sessão expirada.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📦 Como Executar o Projeto Localmente
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Execute o servidor de desenvolvimento:
+   ```bash
+   ng serve
+   ```
+3. Acesse no navegador: `http://localhost:4200`
