@@ -1,6 +1,6 @@
 <mat-toolbar class="navbar">
 
-    <!-- 🏷️ Logo da loja (atualizada para Tech-Info+) -->
+    <!-- 🏷️ Logo da loja (tamanho otimizado para celular) -->
     <a routerLink="/" class="logo">
         Tech-Info+
     </a>
@@ -17,37 +17,40 @@
         </a>
     </nav>
 
-    <!-- 🛒 Ícone do Carrinho (visível tanto no desktop quanto no mobile) -->
-    <button
-        mat-icon-button
-        routerLink="/cart"
-        [matBadge]="cartCount$ | async"
-        matBadgeColor="warn"
-        title="Carrinho">
-        <mat-icon>shopping_cart</mat-icon>
-    </button>
+    <div class="actions-group">
+        <!-- 🛒 Ícone do Carrinho -->
+        <button
+            mat-icon-button
+            routerLink="/cart"
+            [matBadge]="cartCount$ | async"
+            matBadgeColor="warn"
+            title="Carrinho"
+            class="action-btn">
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
 
-    <!-- 📱 Botão Menu Hamburger para Celular (Mobile) - Exibe apenas o ícone "menu" -->
-    <button
-        mat-icon-button
-        [matMenuTriggerFor]="mobileMenu"
-        class="mobile-menu-btn"
-        title="Menu">
-        <mat-icon>menu</mat-icon>
-    </button>
+        <!-- 📱 Botão Menu Mobile (Troca para ícone de Apps/Grid para evitar corte) -->
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="mobileMenu"
+            class="mobile-menu-btn"
+            title="Menu">
+            <mat-icon>grid_view</mat-icon>
+        </button>
 
-    <!-- 👤 Menu do Usuário (Perfil e Opções) -->
-    <button
-        mat-button
-        [matMenuTriggerFor]="userMenu"
-        class="user-menu-btn">
-        <mat-icon>account_circle</mat-icon>
-        <span class="user-name">{{ userName$ | async }}</span>
-    </button>
+        <!-- 👤 Botão de Perfil / Usuário -->
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="userMenu"
+            class="user-menu-btn"
+            title="Conta">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </div>
 
 </mat-toolbar>
 
-<!-- 📱 Menu Dropdown Mobile (Aparece ao clicar no ícone de menu em celulares) -->
+<!-- 📱 Menu Dropdown Mobile (Aparece ao tocar no botão de grade) -->
 <mat-menu #mobileMenu="matMenu" class="mobile-dropdown-panel">
     <button mat-menu-item routerLink="/">
         <mat-icon>home</mat-icon>
