@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { OrderRequest } from '../../shared/models/order.model';
 import { Order } from '../../shared/models/order.model';
 
 /**
- * Serviço de pedidos — usa localhost:8080/api/orders.
+ * Serviço de pedidos — usa apiUrl definida por ambiente (prod = Render).
  */
 @Injectable({ providedIn: 'root' })
 export class OrderService {
 
-  // URL do backend local
-  private apiUrl = 'http://localhost:8080/api/orders';
+  // URL do backend (prod aponta para https://backend-ecommerce-render.onrender.com)
+  private apiUrl = environment.apiUrl + '/api/orders';
 
   private orderCountSubject = new BehaviorSubject<number>(0);
   orderCount$ = this.orderCountSubject.asObservable();
