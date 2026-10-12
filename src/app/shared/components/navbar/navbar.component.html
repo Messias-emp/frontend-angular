@@ -1,8 +1,8 @@
 <mat-toolbar class="navbar">
 
-    <!-- 🏷️ Logo da loja -->
+    <!-- 🏷️ Logo da loja (atualizada para Tech-Info+) -->
     <a routerLink="/" class="logo">
-        TechStore
+        Tech-Info+
     </a>
 
     <span class="spacer"></span>
@@ -17,7 +17,7 @@
         </a>
     </nav>
 
-    <!-- 🛒 Ícone do Carrinho -->
+    <!-- 🛒 Ícone do Carrinho (visível tanto no desktop quanto no mobile) -->
     <button
         mat-icon-button
         routerLink="/cart"
@@ -27,7 +27,7 @@
         <mat-icon>shopping_cart</mat-icon>
     </button>
 
-    <!-- 📱 Botão Menu Hamburger para Celular (Mobile) -->
+    <!-- 📱 Botão Menu Hamburger para Celular (Mobile) - Exibe apenas o ícone "menu" -->
     <button
         mat-icon-button
         [matMenuTriggerFor]="mobileMenu"
@@ -36,7 +36,7 @@
         <mat-icon>menu</mat-icon>
     </button>
 
-    <!-- 👤 Menu do Usuário (Desktop / Logado) -->
+    <!-- 👤 Menu do Usuário (Perfil e Opções) -->
     <button
         mat-button
         [matMenuTriggerFor]="userMenu"
