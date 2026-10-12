@@ -1,78 +1,83 @@
 <mat-toolbar class="navbar">
 
+    <!-- 🏷️ Logo da loja -->
     <a routerLink="/" class="logo">
         TechStore
     </a>
 
     <span class="spacer"></span>
 
-    <nav class="menu">
-
+    <!-- 💻 Menu visível em telas grandes (Desktop) -->
+    <nav class="menu-desktop">
         <a mat-button routerLink="/">
             Home
         </a>
-
         <a mat-button routerLink="/meus-pedidos">
             Pedidos
         </a>
-
     </nav>
 
+    <!-- 🛒 Ícone do Carrinho -->
     <button
         mat-icon-button
         routerLink="/cart"
         [matBadge]="cartCount$ | async"
-        matBadgeColor="warn">
-
-        <mat-icon>
-            shopping_cart
-        </mat-icon>
-
+        matBadgeColor="warn"
+        title="Carrinho">
+        <mat-icon>shopping_cart</mat-icon>
     </button>
 
+    <!-- 📱 Botão Menu Hamburger para Celular (Mobile) -->
+    <button
+        mat-icon-button
+        [matMenuTriggerFor]="mobileMenu"
+        class="mobile-menu-btn"
+        title="Menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- 👤 Menu do Usuário (Desktop / Logado) -->
     <button
         mat-button
-        [matMenuTriggerFor]="userMenu">
-
-        <mat-icon>
-            account_circle
-        </mat-icon>
-
-        {{ userName$ | async }}
-
+        [matMenuTriggerFor]="userMenu"
+        class="user-menu-btn">
+        <mat-icon>account_circle</mat-icon>
+        <span class="user-name">{{ userName$ | async }}</span>
     </button>
 
 </mat-toolbar>
 
+<!-- 📱 Menu Dropdown Mobile (Aparece ao clicar no ícone de menu em celulares) -->
+<mat-menu #mobileMenu="matMenu" class="mobile-dropdown-panel">
+    <button mat-menu-item routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="/meus-pedidos">
+        <mat-icon>receipt_long</mat-icon>
+        <span>Meus Pedidos</span>
+    </button>
+</mat-menu>
+
+<!-- ⚙️ Menu Dropdown do Usuário -->
 <mat-menu #userMenu="matMenu">
-
     <button mat-menu-item routerLink="/profile">
-
         <mat-icon>person</mat-icon>
-
-        Perfil
-
+        <span>Perfil</span>
     </button>
 
     <button
         *ngIf="isAdmin()"
         mat-menu-item
         routerLink="/admin/products">
-
         <mat-icon>admin_panel_settings</mat-icon>
-
-        Administração
-
+        <span>Administração</span>
     </button>
 
     <button
         mat-menu-item
         (click)="logout()">
-
         <mat-icon>logout</mat-icon>
-
-        Sair
-
+        <span>Sair</span>
     </button>
-
 </mat-menu>

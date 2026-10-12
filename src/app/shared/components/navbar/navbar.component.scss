@@ -1,16 +1,17 @@
 /* =============================
-   NAVBAR MODERNA
+   NAVBAR MODERNA E RESPONSIVA
    ============================= */
 
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 0 16px;
 }
 
 /* ---- Logo ---- */
@@ -34,8 +35,8 @@
   flex: 1;
 }
 
-/* ---- Menu ---- */
-.menu {
+/* ---- Menu Desktop ---- */
+.menu-desktop {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -57,7 +58,13 @@
   }
 }
 
-/* ---- Ícones ---- */
+/* ---- Botão Menu Mobile (Hamburger) ----
+   Oculto por padrão em telas grandes, visível apenas em telas menores (celulares) */
+.mobile-menu-btn {
+  display: none !important;
+}
+
+/* ---- Ícones e botões gerais ---- */
 mat-toolbar mat-icon {
   color: #475569;
   transition: color 0.2s ease;
@@ -71,12 +78,10 @@ button:hover mat-icon {
   color: #4f46e5;
 }
 
-/* ---- Badge do carrinho ---- */
 .mat-m3-badge {
   font-weight: 700;
 }
 
-/* ---- Botão do usuário ---- */
 button[mat-button] {
   color: #475569 !important;
   font-weight: 600;
@@ -88,8 +93,8 @@ button[mat-button] {
   }
 }
 
-/* ---- Menu dropdown ---- */
-.mat-m3-menu-panel {
+/* ---- Menu dropdown geral ---- */
+.mat-m3-menu-panel, .mat-menu-panel {
   border-radius: 12px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
   border: none;
@@ -97,7 +102,7 @@ button[mat-button] {
   overflow: hidden;
 }
 
-.mat-m3-menu-item {
+.mat-m3-menu-item, .mat-menu-item {
   border-radius: 8px !important;
   color: #475569 !important;
   font-weight: 600;
@@ -118,13 +123,27 @@ button[mat-button] {
   }
 }
 
-/* ---- Responsivo ---- */
-@media (max-width: 640px) {
-  .menu {
-    display: none;
+/* =============================
+   RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS (CELULARES)
+   ============================= */
+@media (max-width: 768px) {
+  /* Esconde o menu de links horizontais no celular */
+  .menu-desktop {
+    display: none !important;
   }
 
+  /* Exibe o botão de menu hamburguer */
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+
+  /* Ajusta o tamanho da logo para caber melhor em telas estreitas */
   .logo {
     font-size: 18px;
+  }
+
+  /* Oculta o nome do usuário em telas muito pequenas, mostrando apenas o ícone de perfil */
+  .user-name {
+    display: none;
   }
 }
